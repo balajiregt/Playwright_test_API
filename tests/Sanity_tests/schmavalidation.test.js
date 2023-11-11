@@ -7,7 +7,7 @@ test('highlevel test to check JSON schema against the GET response', async ({ re
     const ajv = new Ajv();
 
     // Load the schema (assuming it's located at './fixtures/schema.json')
-    const schema = require('./response-schema.json');
+    const schema = require('../response-schema.json');
 
     // Perform the API request using Playwright
     const response = await request.get('https://gorest.co.in/public/v1/users');
@@ -31,7 +31,7 @@ test('validating the response timestamp value against the current execution time
     const ajv = new Ajv();
 
     // Load the schema (assuming it's located at './fixtures/schema.json')
-    const schema = require('./response-schema2.json');
+    const schema = require('../response-schema2.json');
 
     // Fetch the API data directly in Playwright
     const response = await request.get('https://mempool.space/api/tx/15e10745f15593a899cef391191bdd3d7c12412cc4696b7bcb669d0feadc8521/status');
