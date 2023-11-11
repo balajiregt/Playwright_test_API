@@ -4,7 +4,7 @@ pipeline {
     tools {
         // Make sure 'NodeJS' matches the name of the Node.js installation
         // configured in your Jenkins Global Tool Configuration
-        nodejs 'NodeJS'
+        nodejs 'test'
     }
 
     stages {
