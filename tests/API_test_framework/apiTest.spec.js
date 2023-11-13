@@ -1,4 +1,6 @@
 const { test, expect } = require('@playwright/test');
+const Ajv = require('ajv');
+const userSchema = require('./userSchema.json')
 const { getRequest, postRequest, putRequest, deleteRequest } = require('./requestUtility');
 const { saveData, getData } = require('./dataStore');
 const fs = require('fs').promises;
@@ -23,6 +25,27 @@ test.describe.serial('User API Tests', () => {
         expect(response.status()).toBe(200);
         const userDetails = await response.json();
         console.log('Retrieved user details', userDetails)
+    });
+
+    test('GET User - Validate JSON Schema', async () => {
+        const userId = getData('userId');
+        const response = await getRequest(`/users/${userId}`);
+        
+        expect(response.status()).toBe(200);
+
+        const userDetails = await response.json();
+        console.log('Retrieved user details', userDetails);
+
+        // Initialize AJV and validate the response
+        const ajv = new Ajv();
+        const validate = ajv.compile(userSchema);
+        const valid = validate(userDetails);
+
+        if (!valid) {
+            console.error('AJV Validation Errors:', ajv.errorsText(validate.errors));
+        }
+
+        expect(valid).toBe(true);
     });
 
     test('PUT User', async () => {
