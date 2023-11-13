@@ -23,7 +23,7 @@ pipeline {
         stage('Load Environment Variables') {
             steps {
                 // Load environment variables from .env file
-                sh 'source load_env.sh'
+                sh 'bash -c "source load_env.sh"'
             }
         }
 
