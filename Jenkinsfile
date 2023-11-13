@@ -42,11 +42,11 @@ pipeline {
         }
 
         stage('Run Playwright Tests') {
-            steps {
-                // Run Playwright tests
-                sh 'npx playwright test'
-            }
+        steps {
+            // Run Playwright tests with JUnit reporter
+            sh 'PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml npx playwright test --config=./playwright-local.config.js --reporter=junit'
         }
+    }
     }
 
     post {
