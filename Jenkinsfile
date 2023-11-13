@@ -23,7 +23,7 @@ pipeline {
         stage('Load Environment Variables') {
             steps {
                 // Load environment variables from .env file
-                sh 'bash -c "source load_env.sh"'
+                sh 'source /Users/balaji/Desktop/playwright_projects/Playwright_test_API/load_env.sh'
             }
         }
 
@@ -31,6 +31,13 @@ pipeline {
             steps {
                 // Install npm dependencies, including Playwright
                 sh 'npm install'
+            }
+        }
+
+        stage('Install Playwright Browsers') {
+            steps {
+                // Install Playwright browsers
+                sh 'npx playwright install'
             }
         }
 
