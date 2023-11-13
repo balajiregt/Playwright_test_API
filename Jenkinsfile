@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        GOREST_API_TOKEN = credentials('gorest-api-token')
+    }
+
     tools {
         // Make sure 'NodeJS' matches the name of the Node.js installation
         // configured in your Jenkins Global Tool Configuration
@@ -12,6 +16,13 @@ pipeline {
             steps {
                 // Checks out the source code from the Git repository
                 checkout scm
+            }
+        }
+
+        stage('Load Environment Variables') {
+            steps {
+                // Load environment variables from .env file
+                sh 'source load_env.sh'
             }
         }
 
