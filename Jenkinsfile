@@ -53,7 +53,7 @@ pipeline {
         always {
             // Publish JUnit test results
             junit 'test-results/*.xml'
-            // Actions to perform after the pipeline execution, regardless of the result
+            // Action to perform after the pipeline execution, regardless of the result
             echo 'Pipeline execution is complete.'
         }
 
