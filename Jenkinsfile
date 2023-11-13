@@ -1,9 +1,9 @@
 pipeline {
     agent any
+
     environment {
+        GOREST_API_TOKEN = credentials('gorest-api-token')
         BASE_URL = 'https://gorest.co.in/public/v2'
-        // The API token will be loaded from Jenkins credentials
-        GOREST_API_TOKEN = credentials('token')
     }
 
     tools {
@@ -17,6 +17,13 @@ pipeline {
             steps {
                 // Checks out the source code from the Git repository
                 checkout scm
+            }
+        }
+
+        stage('Load Environment Variables') {
+            steps {
+                // Load environment variables from .env file
+                sh 'source load_env.sh'
             }
         }
 
