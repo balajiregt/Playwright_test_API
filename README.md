@@ -1,0 +1,56 @@
+Certainly! Below is a template for a README file for your API testing project using Playwright. This README provides an overview of the project, instructions on how to set it up and run tests, and other relevant information. You can customize it to fit the specifics of your project.
+
+---
+
+# API Testing Boilerplate with Playwright
+
+This repository contains a boilerplate project for API testing using Playwright. It is designed to provide a robust and flexible framework for testing RESTful APIs, including features for sending various types of HTTP requests, handling responses, and storing test data.
+
+## Features
+
+- Support for GET, POST, PUT, and DELETE HTTP methods.
+- Reusable request utility functions.
+- In-memory data store for sharing data across tests.
+- Environment configuration using `.env` files for secure token management.
+- Dynamic data handling using external JSON files.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (v12 or higher)
+- npm (usually comes with Node.js)
+
+## Installation
+
+1. **Install Dependencies:**
+   npm install playwright dotenv @playwright/test
+Note: The fs module is a part of Node.js and does not require separate installation.
+
+2. **Set Up Environment Variables:**
+   - Create a `.env` file in the project root.
+   - Copy the variables from '.envexample'
+   - Add the following values to variables:
+     ```
+     GOREST_API_TOKEN=your_api_token_here
+     BASE_URL=https://gorest.co.in/public/v2
+     ```
+
+## Running Tests
+
+To run the tests, use the following command:
+
+npx playwright test
+
+## Project Structure
+
+- `requestUtility.js`: Contains functions for making HTTP requests.
+- `dataStore.js`: Provides a simple in-memory store for data.
+- `tests/`: Directory containing test files.
+- `.env`: Environment variables for API token and base URL.
+
+## Writing Tests
+
+- Create test files in the `tests/` directory.
+- Use the functions from `requestUtility.js` to send API requests.
+- Store and retrieve test data using `dataStore.js`.
+- For dynamic data, modify JSON files as needed before sending requests.
