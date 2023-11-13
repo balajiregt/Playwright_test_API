@@ -1,30 +1,24 @@
 pipeline {
     agent any
 
-    tools {
-        // Make sure 'NodeJS' matches the name of the Node.js installation
-        // configured in your Jenkins Global Tool Configuration
-        nodejs 'test'
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                // Checks out the source code from the Git repository
+                // Checks out the source code from your repository
                 checkout scm
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                // Install npm dependencies, including Playwright
+                // Install project dependencies, including Playwright
                 sh 'npm install'
             }
         }
 
         stage('Run Playwright Tests') {
             steps {
-                // Run Playwright tests
+                // Run your Playwright tests
                 sh 'npx playwright test'
             }
         }
@@ -32,18 +26,18 @@ pipeline {
 
     post {
         always {
-            // Actions to perform after the pipeline execution, regardless of the result
-            echo 'Pipeline execution is complete.'
+            // Collect results, artifacts, or perform cleanup
+            echo 'Test execution completed'
         }
 
         success {
-            // Actions to perform if the pipeline succeeds
-            echo 'Pipeline succeeded!'
+            // Actions to perform on successful completion
+            echo 'Tests passed successfully!'
         }
 
         failure {
             // Actions to perform if the pipeline fails
-            echo 'Pipeline failed. Check logs for details.'
+            echo 'Tests failed. Check logs for details.'
         }
     }
 }

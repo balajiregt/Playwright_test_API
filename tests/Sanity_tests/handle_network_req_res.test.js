@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { request } from 'http';
 const fs = require('fs');
 
-test.describe('mock requests', () => {
+test.describe.serial('mock requests', () => {
 
   test('log the network apis', async ({ page }) => {
 
@@ -122,7 +122,7 @@ test('intercept, modify response data and trigger a GET call', async ({ page }) 
     return JSON.parse(rawData);
   }
 
-  const newData = readJsonFile('/Users/bky13/Desktop/my_projects/Playwright_Practice-master/Playwright_practice_project1/tests/Sanity_testing/testdata1.json');
+  const newData = readJsonFile('/Users/balaji/Desktop/playwright_projects/Playwright_test_API/tests/Sanity_tests/testdata1.json');
 
   const urlToIntercept = 'https://api.openweathermap.org/data/2.5/forecast?q=London,%20GB&APPID=c83b50aff9a68abefa34e64895024d99&units=metric';
 

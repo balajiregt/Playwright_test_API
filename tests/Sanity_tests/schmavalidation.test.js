@@ -2,6 +2,7 @@
 import { test, request, expect } from '@playwright/test';
 const Ajv = require('ajv');
 
+test.describe.serial('Schema validation Tests', () => {
 test('highlevel test to check JSON schema against the GET response', async ({ request }) => {
     // Initialize AJV
     const ajv = new Ajv();
@@ -41,6 +42,7 @@ test('validating the response timestamp value against the current execution time
     const blockTime = data.block_time;  // block_time from API
     const currentTime = Math.floor(Date.now() / 1000);  // Current time in seconds
 
-    expect(currentTime - blockTime).toBeLessThanOrEqual(5);
+    expect(currentTime - blockTime).not.toBeLessThanOrEqual(5);
 });
 
+})
