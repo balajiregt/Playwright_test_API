@@ -10,8 +10,8 @@
       },
       "email": {
         "type": "string",
-        "format": "email"
-      },
+        "pattern": "^(.+)@(email\\.com|outlook\\.com|gmail\\.com)$"
+    },    
       "gender": {
         "type": "string",
         "enum": ["male", "female", "other"] 
