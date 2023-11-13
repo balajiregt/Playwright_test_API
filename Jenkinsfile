@@ -42,17 +42,17 @@ pipeline {
         }
 
         stage('Run Playwright Tests') {
-            steps {
-                // Run Playwright tests
-                sh 'npx playwright test'
-            }
+        steps {
+            // Run Playwright tests with JUnit reporter
+            sh 'PLAYWRIGHT_JUNIT_OUTPUT_NAME=test-results.xml npx playwright test --config=./playwright.config.js --reporter=junit'
         }
+    }
     }
 
     post {
         always {
             // Publish JUnit test results
-            junit '**/test-results/*.xml'
+            junit 'test-results/*.xml'
             // Actions to perform after the pipeline execution, regardless of the result
             echo 'Pipeline execution is complete.'
         }
