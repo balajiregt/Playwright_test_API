@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        BASE_URL = 'https://gorest.co.in/public/v2'
+        // The API token will be loaded from Jenkins credentials
+        GOREST_API_TOKEN = credentials('token')
+    }
 
     tools {
         // Make sure 'NodeJS' matches the name of the Node.js installation
