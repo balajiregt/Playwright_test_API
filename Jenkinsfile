@@ -44,7 +44,7 @@ pipeline {
         stage('Run Playwright Tests') {
         steps {
             // Run Playwright tests with JUnit reporter
-            sh 'PLAYWRIGHT_JUNIT_OUTPUT_NAME=test-results.xml npx playwright test --config=./playwright.config.js --reporter=junit'
+            sh 'npx playwright test --config=playwright.config.js'
         }
     }
     }
