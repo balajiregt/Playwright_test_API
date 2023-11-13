@@ -23,7 +23,7 @@ pipeline {
         stage('Load Environment Variables') {
             steps {
                 // Load environment variables from .env file
-                sh 'source /Users/balaji/Desktop/playwright_projects/Playwright_test_API/load_env.sh'
+                sh 'bash -c "source load_env.sh"'
             }
         }
 
