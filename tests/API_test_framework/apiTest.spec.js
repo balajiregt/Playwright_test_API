@@ -52,11 +52,11 @@ test.describe.serial('User API Tests', () => {
     test('DELETE User', async () => {
         const userId = getData('userId');
         const response = await deleteRequest(`/users/${userId}`);
-
+        expect(response.status()).toBe(204);
         const responseBody = await response.text();
         expect(responseBody).toBe('');
         console.log(responseBody)
-        expect(response.status()).toBe(203);
+        
     });
 
 });
