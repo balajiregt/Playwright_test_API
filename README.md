@@ -28,7 +28,7 @@ Before you begin, ensure you have the following installed:
    ```
 Note: The fs module is a part of Node.js and does not require separate installation.
 
-3. **Set Up Environment Variables:**
+2. **Set Up Environment Variables:**
    - Create a `.env` file in the project root.
    - Copy the variables from '.envexample'
    - Add the following values to variables:
@@ -41,7 +41,9 @@ Note: The fs module is a part of Node.js and does not require separate installat
 
 To run the tests, use the following command:
 
+```
 npx playwright test
+```
 
 ## Project Structure
 
