@@ -23,10 +23,12 @@ Before you begin, ensure you have the following installed:
 ## Installation
 
 1. **Install Dependencies:**
+   ```
    npm install playwright dotenv @playwright/test
+   ```
 Note: The fs module is a part of Node.js and does not require separate installation.
 
-2. **Set Up Environment Variables:**
+3. **Set Up Environment Variables:**
    - Create a `.env` file in the project root.
    - Copy the variables from '.envexample'
    - Add the following values to variables:
